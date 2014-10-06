@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    {% block titulo %}
+    <title>Vigilante</title>
+    {% endblock %}
+    
+    {% block estilos %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/principal.css'%}"/>
+    {% endblock %}
+    
+    {% block cabecalho %}
+    {% endblock %}
+  </head>
+  <body>
+  {% block corpo %}
+  {% endblock %}
+  </body>
+</html>
