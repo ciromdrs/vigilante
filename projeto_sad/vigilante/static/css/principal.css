@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+html, body{
+  background-color: #dfdfdf;
+  height:100%;
+  width:100%;
+}
+
+#map-canvas {
+  height: 80%;
+  width: 80%;
+  margin: 0px;
+  padding: 0px;
+  left:10%;
+  right: 10%;
+}
