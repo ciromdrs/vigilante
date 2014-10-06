@@ -32,14 +32,14 @@
 			    });
 		    }
 			
-			// Marcando áreas (círculos)
-            new google.maps.Circle({
-                map:         map,
-                center:      new google.maps.LatLng(-6.4652023,-37.0942773),
-                fillColor:   red,
-                strokeColor: 'transparent',
-                radius:      100,
-            });
+			new google.maps.Circle({
+				map: map,
+				center: new google.maps.LatLng(latitude, longitude),
+				fillColor: 'red',
+				radius: 100,
+				strokeColor:'transparent',
+			});
+			
 		}
 		
         // Listener que inicializa o mapa após o carregamento da página
