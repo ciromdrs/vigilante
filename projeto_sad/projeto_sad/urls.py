@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+import vigilante
+from vigilante.views import home
 
 urlpatterns = patterns('',
     # Examples:
@@ -7,4 +9,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', home,),
+    url(r'^/', home,),
+    url(r'^/?P<endereco>', home,), #escrever regex
 )
