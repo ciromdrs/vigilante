@@ -1,9 +1,14 @@
 @CHARSET "UTF-8";
 
-html, body{
-  background-color: #dfdfdf;
+html{
   height:100%;
   width:100%;
+}
+
+body{
+  background-color: #dfdfdf;
+  height:90%;
+  width:90%;
 }
 
 #map-canvas {
