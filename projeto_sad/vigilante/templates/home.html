@@ -3,74 +3,8 @@
     <!-- Google Maps -->
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    
-    <script>
-        // Inicialização do mapa
-		function initialize() {
-			var mapOptions = {
-			  zoom: 15,
-			  center: new google.maps.LatLng(-6.467149,-37.084322),
-			  panControl: false,
-			  zoomControl: false,
-			  scaleControl: true,
-			};
-			
-			// Declarando a variável do mapa
-			var map = new google.maps.Map(document.getElementById('map-canvas'),
-			                              mapOptions);
-			
-			// Marcando ponto, caso seja diferente de null
-			var ponto = document.getElementById('ponto');
-			if (ponto != null){
-			    var latitude = ponto.value.split(',')[0];
-			    var longitude = ponto.value.split(',')[1];
-			    
-			    // Marcando ponto
-			    new google.maps.Marker({
-			        map:      map,
-			        position: new google.maps.LatLng(latitude, longitude),
-			    });
-		    }
-			
-			new google.maps.Circle({
-				map: map,
-				center: new google.maps.LatLng('-6.4652023', '-37.0942773'),
-				fillColor: 'red',
-				radius: 500,
-				strokeColor:'transparent',
-			});
-			
-			new google.maps.Circle({
-                map: map,
-                center: new google.maps.LatLng('-6.462477', '-37.1083922'),
-                fillColor: 'blue',
-                radius: 400,
-                strokeColor:'transparent',
-            });
-			
-			new google.maps.Circle({
-                map: map,
-                center: new google.maps.LatLng(-6.4673078, -37.0851088),
-                fillColor: 'green',
-                radius: 300,
-                strokeColor:'transparent',
-            });
-			
-			new google.maps.Circle({
-                map: map,
-                center: new google.maps.LatLng(-6.4621788, -37.0943734),
-                fillColor: 'yellow',
-                radius: 300,
-                strokeColor:'transparent',
-            });
-			
-		}
-		
-        // Listener que inicializa o mapa após o carregamento da página
-        // para evitar erros.
-		google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-{% endblock %}
+    <script src="/static/js/functions.js"></script>
+    {% endblock %}
 
 {% block corpo %}
     <input id='ponto' type='hidden' value='{{p}}'>
