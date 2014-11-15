@@ -60,15 +60,15 @@ WSGI_APPLICATION = 'projeto_sad.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'vigilante_db',
-#        'USER': 'postgres',
-#        'PASSWORD': '123',
-#        'HOST':'localhost'
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'vigilante_db',
+        'USER': 'postgres',
+        'PASSWORD': '123',
+        'HOST':'localhost'
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

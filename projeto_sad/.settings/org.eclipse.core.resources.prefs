@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//vigilante/admin.py=utf-8
+encoding//vigilante/models.py=utf-8
+encoding//vigilante/util.py=utf-8
 encoding//vigilante/views.py=utf-8
