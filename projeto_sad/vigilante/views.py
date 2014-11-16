@@ -5,6 +5,19 @@ from vigilante.util import get_lat_lng
 
 # Create your views here.
 def home(req):
+    # -- temporário
+    from vigilante.models import Evento
+
+    print ('aqui')
+    eventos = Evento.objects.all()
+    for e in eventos:
+        print('Evento:', e.id)
+        print('Endereco:', e.endereco)
+        print('Latitude:', e.lat) # o simples acesso à propriedade faz com que o
+        # endereço seja convertido num ponto geográfico.
+        print('Longitude:', e.lng)
+    # temporário --
+    
     valores = {}
     if req.method == 'POST':
         # Marcando ponto
@@ -13,3 +26,4 @@ def home(req):
     return render_to_response('home.html',
         valores,
         context_instance=RequestContext(req))
+

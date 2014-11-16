@@ -14,7 +14,8 @@ class Evento(models.Model):
         '''Método acessador (getter) da latitude.
         :returns:
             A latitude do ponto. Uma string.'''
-        if (self._lat == None) or (self._lng == None):
+        if (self._lat == '') or (self._lng == ''):
+            print ("dentro do if")
             self._obter_lat_lng()
         return self._lat
     
@@ -23,7 +24,7 @@ class Evento(models.Model):
         '''Método acessador (getter) da longitude.
         :returns:
             A longitude do ponto. Uma string.'''
-        if (self._lat == None) or (self._lng == None):
+        if (self._lat == '') or (self._lng == ''):
             self._obter_lat_lng()
         return self._lng
     
