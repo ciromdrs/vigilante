@@ -14,41 +14,45 @@ function mark(ponto, map){
     }
 }
 
-function create_circle(map){
-    new google.maps.Circle({
-    	map: map,
-    	center: new google.maps.LatLng('-6.4652023', '-37.0942773'),
-    	fillColor: 'red',
-    	radius: 500,
-    	strokeColor:'transparent',
-    });
-    
-    new google.maps.Circle({
-        map: map,
-        center: new google.maps.LatLng('-6.462477', '-37.1083922'),
-        fillColor: 'blue',
-        radius: 400,
-        strokeColor:'transparent',
-    });
-    
-    new google.maps.Circle({
-        map: map,
-        center: new google.maps.LatLng(-6.4673078, -37.0851088),
-        fillColor: 'green',
-        radius: 300,
-        strokeColor:'transparent',
-    });
-    
-    new google.maps.Circle({
-        map: map,
-        center: new google.maps.LatLng(-6.4621788, -37.0943734),
-        fillColor: 'yellow',
-        radius: 300,
-        strokeColor:'transparent',
-    });
+/** Obtendo pontos do mapa. Após receber os pontos, chama a função plotarPontos */
+function getPontos(map){
+	//alert('getPontos');
+    var requisicao = new XMLHttpRequest(); // Não funciona no IE8 ou mais antigo
+    requisicao.open('GET', 'json/pontos', false);
+    requisicao.onreadystatechange = function(){
+    	plotarPontos(map, requisicao);
+    };
+    requisicao.send(null);
 }
 
-// Inicialização do mapa
+/** Plotando pontos no mapa. */
+function plotarPontos(map, requisicao){
+    carregou = requisicao.readyState === 4; // 4 significa que terminou de carregar
+    status_ok = requisicao.status === 200;  // 200 significa status OK
+    var dados = null;  // Dados da requisição AJAX recebida do servidor
+    var pontos = null; // Pontos a serem plotados no mapa
+    
+    if (carregou && status_ok){
+        // Tudo certo. Plotar pontos.
+        dados = JSON.parse(requisicao.responseText);
+        pontos = dados.eventos;
+
+        for (val of pontos) {
+            if (val != null){
+                // Marcando ponto
+                new google.maps.Marker({
+                    map:      map,
+                    position: new google.maps.LatLng(val.lat, val.lng),
+                });
+            };
+        }
+    } else {
+    	// Erro! fazer alguma coisa
+        alert("Erro no carregamento da página.");
+    }
+}
+
+/** Inicialização do mapa. */
 function initialize() {
     var mapOptions = {
         zoom: 15,
@@ -66,8 +70,7 @@ function initialize() {
     var ponto = document.getElementById('ponto');
     mark(ponto,map);
     
-    create_circle(map);
-    
+    getPontos(map);
 }
 
 // Listener que inicializa o mapa após o carregamento da página

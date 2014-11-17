@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from vigilante.views import home
+from vigilante.views import home, get_eventos_json
 
 urlpatterns = patterns('',
     # Examples:
@@ -9,4 +9,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', home),
+    url(r'^json/pontos$', get_eventos_json)
 )

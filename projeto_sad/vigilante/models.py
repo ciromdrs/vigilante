@@ -15,7 +15,6 @@ class Evento(models.Model):
         :returns:
             A latitude do ponto. Uma string.'''
         if (self._lat == '') or (self._lng == ''):
-            print ("dentro do if")
             self._obter_lat_lng()
         return self._lat
     
@@ -37,3 +36,4 @@ class Evento(models.Model):
             self._lat = vet_lat_lng[0]     # Atribui a latitude (índice 0)
             self._lng = vet_lat_lng[1]     # Atribui a longitude (índice 1)
             self.save()                    # Salva o modelo no banco
+    
