@@ -1,5 +1,5 @@
 var marcadores = []; // Array de marcadores
-var map = null; // Mapa
+var map = null;      // Mapa
 
 /** Marca um ponto no mapa e adiciona ao array. */
 function marcar(map, marcador, array){
@@ -8,11 +8,11 @@ function marcar(map, marcador, array){
 }
 
 /** Apaga lista de marcadores. */
-function apagar(marcadores){
-	for (marcador of marcadores){
+function apagar(array){
+	for (marcador of array){
 		marcador.setMap(null);
 	}
-	marcadores = [];
+	array = [];
 }
 
 /** Obtendo pontos do mapa. Após receber os pontos, chama a função plotarPontos */
