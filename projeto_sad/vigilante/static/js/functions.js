@@ -1,22 +1,5 @@
-
-// Função de marcação de pontos 
-// Possivelmente generalizar para markar N pontos em uma única chamada
-function mark(ponto, map){
-    if (ponto != null){
-        var latitude = ponto.value.split(',')[0];
-        var longitude = ponto.value.split(',')[1];
-        
-        // Marcando ponto
-        new google.maps.Marker({
-            map:      map,
-            position: new google.maps.LatLng(latitude, longitude),
-        });
-    }
-}
-
 /** Obtendo pontos do mapa. Após receber os pontos, chama a função plotarPontos */
 function getPontos(map){
-	//alert('getPontos');
     var requisicao = new XMLHttpRequest(); // Não funciona no IE8 ou mais antigo
     requisicao.open('GET', 'json/pontos', false);
     requisicao.onreadystatechange = function(){
@@ -65,10 +48,6 @@ function initialize() {
     // Declarando a variável do mapa
     var map = new google.maps.Map(document.getElementById('map-canvas'),
                                   mapOptions);
-    
-    // Marcando ponto, caso seja diferente de null
-    var ponto = document.getElementById('ponto');
-    mark(ponto,map);
     
     getPontos(map);
 }

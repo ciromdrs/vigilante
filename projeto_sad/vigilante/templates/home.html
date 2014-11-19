@@ -7,15 +7,5 @@
     {% endblock %}
 
 {% block corpo %}
-    <input id='ponto' type='hidden' value='{{p}}'>
-    
-    <form method="post" action="/">
-        {% csrf_token %}
-        <input name='endereco' type='text'>
-        <input type='submit' value='Marcar'>
-    </form>
-    
-    <div>Ponto: {{p}}</div>
-
     <div id="map-canvas"></div>
 {% endblock %}
