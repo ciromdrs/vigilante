@@ -1,7 +1,9 @@
 /** Obtendo pontos do mapa. Após receber os pontos, chama a função plotarPontos */
 function getPontos(map){
     var requisicao = new XMLHttpRequest(); // Não funciona no IE8 ou mais antigo
-    requisicao.open('GET', 'json/pontos', false);
+    var url = 'json/pontos';
+    //var tipo = document.getElementById('');
+    requisicao.open('GET', url, false);
     requisicao.onreadystatechange = function(){
     	plotarPontos(map, requisicao);
     };

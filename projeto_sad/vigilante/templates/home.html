@@ -7,5 +7,11 @@
     {% endblock %}
 
 {% block corpo %}
+    <select id='id_select_tipo' name="tipo">
+		<option value="">---------</option>
+		{% for t in tipos %}
+		<option value="{{t.0}}">{{t.1}}</option>
+		{% endfor %}
+	</select>
     <div id="map-canvas"></div>
 {% endblock %}

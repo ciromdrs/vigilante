@@ -9,5 +9,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', home),
-    url(r'^json/pontos$', get_eventos_json)
+    url(r'^json/pontos/(?P<tipo>)$', get_eventos_json)
 )
