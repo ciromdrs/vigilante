@@ -16,15 +16,17 @@ def home(req):
 def get_eventos_json(req, tipo):
     '''Retorna uma coleção de Eventos transformados em JSON para plotar no mapa.'''
     qs = Evento.objects # Objeto QuerySet dos Eventos
-    print(req.GET)
+    tipo = req.GET['tipo'] # Não sei porque, mas o tipo não está chegando como parâmetro
     eventos = [] # Lista de eventos a ser enviada
-    dados = {}   # Dicionário a ser convertido em JSON
-    for e in Evento.objects.all():
+    
+    if tipo:
+        qs = qs.filter(tipo=tipo)
+    
+    for e in qs.iterator():
         obj = {
             # Pode adicionar outros campos aqui
             'lat' : e.lat,
             'lng' : e.lng,
         }
         eventos.append(obj)
-    dados['eventos'] = eventos
-    return HttpResponse(json.dumps(dados))
+    return HttpResponse(json.dumps({'eventos':eventos}))
