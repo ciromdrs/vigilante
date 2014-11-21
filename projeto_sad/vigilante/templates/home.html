@@ -10,8 +10,9 @@
     <select id='id_select_tipo' name="tipo" onchange='getPontos()'>
 		<option value="">---------</option>
 		{% for t in tipos %}
-		<option value="{{t.0}}">{{t.1}}</option>
+		<option value="{{t.0}}">{{t.1}}</option> <!-- t.0 quer dizer t[0] -->
 		{% endfor %}
 	</select>
+	
     <div id="map-canvas"></div>
 {% endblock %}

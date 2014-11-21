@@ -1,13 +1,17 @@
 var marcadores = []; // Array de marcadores
 var map = null;      // Mapa
 
-/** Marca um ponto no mapa e adiciona ao array. */
-function marcar(map, marcador, array){
+/** Marca um ponto no mapa e adiciona ao array.
+ * @param marcador Marcador do tipo google.maps.Marker.
+ * @param array Vetor que guarda os pontos.*/
+function marcar(marcador, array){
 	array.push(marcador);
 	marcador.setMap(map);
 }
 
-/** Apaga lista de marcadores. */
+/** Apaga lista de marcadores. Seta os mapas dos marcadores como null apagando
+ * eles do mapa e atriubui [] ao array.
+ * @param array Vetor que guarda os pontos. */
 function apagar(array){
 	for (marcador of array){
 		marcador.setMap(null);
@@ -15,7 +19,7 @@ function apagar(array){
 	array = [];
 }
 
-/** Obtendo pontos do mapa. Após receber os pontos, chama a função plotarPontos */
+/** Obtém pontos do mapa. Após receber os pontos, chama a função plotarPontos. */
 function getPontos(){
     var requisicao = new XMLHttpRequest(); // Não funciona no IE8 ou mais antigo
     var url = 'json/pontos/';
@@ -31,7 +35,10 @@ function getPontos(){
     requisicao.send(null);
 }
 
-/** Plotando pontos no mapa. */
+/** Plota pontos no mapa.
+ * @param requisicao A requisição (XMLHttpRequest) enviada ao servidor. Ela deve
+ * conter um vetor chamado 'eventos' que contém propriedades lat e lng em cada 
+ * elemento. */
 function plotarPontos(requisicao){
     carregou = requisicao.readyState === 4; // 4 significa que terminou de carregar
     status_ok = requisicao.status === 200;  // 200 significa status OK
@@ -50,7 +57,7 @@ function plotarPontos(requisicao){
                 // Marcando ponto
             	var marcador = new google.maps.Marker({
                     position: new google.maps.LatLng(val.lat, val.lng)}); 
-                marcar(map, marcador, marcadores);
+                marcar(marcador, marcadores);
             }
         }
     } else {
