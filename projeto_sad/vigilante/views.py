@@ -7,6 +7,7 @@ import json
 
 # Create your views here.
 def home(req):
+    '''Renderiza a página inicial.'''
     valores = { # Valores a renderizar na página
         'tipos': TIPOS_DE_EVENTOS}
     return render_to_response('home.html',
@@ -14,7 +15,12 @@ def home(req):
         context_instance=RequestContext(req))
 
 def get_eventos_json(req, tipo):
-    '''Retorna uma coleção de Eventos transformados em JSON para plotar no mapa.'''
+    '''Pega uma coleção de Eventos e transforma em JSON para plotar no mapa.
+    :param tipo:
+        Tipo de Evento selecionado para filtrar os resultados. Uma str.
+    :returns:
+        HttpResponse contendo dados JSON com um vetor chamado "eventos" contendo
+        os dados (lant e lng) necessários para plotar os pontos no mapa.'''
     qs = Evento.objects    # Objeto QuerySet dos Eventos
     tipo = req.GET['tipo'] # Não sei porque, mas o tipo não está chegando como parâmetro
     eventos = []           # Lista de eventos a ser enviada
