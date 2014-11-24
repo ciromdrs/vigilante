@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from django.db import models
-
+from util import *
 '''Possíveis tipos de Evento. Os pares indicam o valor a ser guardado no banco
 (ex.: ASSALTO) e um valor amigável ao usuário (ex.: Assalto).'''
 TIPOS_DE_EVENTOS = (

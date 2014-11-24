@@ -1,6 +1,6 @@
-var marcadores = []; // Array de marcadores
+var marcadores1 = []; // Array de marcadores para a primeira seleção
+var marcadores2 = []; // Array de marcadores para a segunda seleção
 var map = null;      // Mapa
-
 /** Marca um ponto no mapa e adiciona ao array. */
 function marcar(map, marcador, array){
 	array.push(marcador);
@@ -16,23 +16,38 @@ function apagar(array){
 }
 
 /** Obtendo pontos do mapa. Após receber os pontos, chama a função plotarPontos */
-function getPontos(){
+function getPontosLeft(){
     var requisicao = new XMLHttpRequest(); // Não funciona no IE8 ou mais antigo
     var url = 'json/pontos/';
-    var tipo_evento = document.getElementById('id_select_tipo').value;
+    var tipo_evento = document.getElementById('left').value;
 
     url += '?tipo='+tipo_evento
     
     requisicao.open('GET', url, false);
     requisicao.onreadystatechange = function(){
-    	plotarPontos(requisicao);
+    	plotarPontos(requisicao,"red",marcadores1);
+    };
+    
+    requisicao.send(null);
+}
+
+function getPontosRight(){
+    var requisicao = new XMLHttpRequest(); // Não funciona no IE8 ou mais antigo
+    var url = 'json/pontos/';
+    var tipo_evento = document.getElementById('right').value;
+
+    url += '?tipo='+tipo_evento
+    
+    requisicao.open('GET', url, false);
+    requisicao.onreadystatechange = function(){
+    	plotarPontos(requisicao,"green",marcadores2);
     };
     
     requisicao.send(null);
 }
 
 /** Plotando pontos no mapa. */
-function plotarPontos(requisicao){
+function plotarPontos(requisicao,cor,marcadores){
     carregou = requisicao.readyState === 4; // 4 significa que terminou de carregar
     status_ok = requisicao.status === 200;  // 200 significa status OK
     var dados = null;  // Dados da requisição AJAX recebida do servidor
@@ -42,14 +57,16 @@ function plotarPontos(requisicao){
         // Tudo certo. Plotar pontos.
         dados = JSON.parse(requisicao.responseText);
         pontos = dados.eventos;
-        
+        //console.log(color) 
         apagar(marcadores);
-        
+        icon = "/static/img/"+ cor + ".png";
         for (val of pontos) {
             if (val != null){
                 // Marcando ponto
             	var marcador = new google.maps.Marker({
-                    position: new google.maps.LatLng(val.lat, val.lng)}); 
+                    position: new google.maps.LatLng(val.lat, val.lng)
+                });
+                marcador.setIcon(icon);
                 marcar(map, marcador, marcadores);
             }
         }

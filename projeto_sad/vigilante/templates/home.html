@@ -7,7 +7,13 @@
     {% endblock %}
 
 {% block corpo %}
-    <select id='id_select_tipo' name="tipo" onchange='getPontos()'>
+    <select id='left' name="tipo" onchange="getPontosLeft()">
+		<option value="">---------</option>
+		{% for t in tipos %}
+		<option value="{{t.0}}">{{t.1}}</option>
+		{% endfor %}
+	</select>
+    <select id='right' name="tipo" onchange="getPontosRight()">
 		<option value="">---------</option>
 		{% for t in tipos %}
 		<option value="{{t.0}}">{{t.1}}</option>
