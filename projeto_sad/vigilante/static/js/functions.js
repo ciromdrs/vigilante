@@ -87,7 +87,6 @@ function initialize() {
                                   zoomControl: false,
                                   scaleControl: true,
                               });
-    getPontos();
 }
 
 // Listener que inicializa o mapa após o carregamento da página

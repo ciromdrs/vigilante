@@ -7,18 +7,28 @@
     {% endblock %}
 
 {% block corpo %}
-    <select id='left' name="tipo" onchange="getPontosLeft()">
-		<option value="">---------</option>
-		{% for t in tipos %}
-		<option value="{{t.0}}">{{t.1}}</option>
-		{% endfor %}
-	</select>
-    <select id='right' name="tipo" onchange="getPontosRight()">
-		<option value="">---------</option>
-		{% for t in tipos %}
-		<option value="{{t.0}}">{{t.1}}</option> <!-- t.0 quer dizer t[0] -->
-		{% endfor %}
-	</select>
+    <div id="div-forms">
+    
+        <div id="div-left">
+	        <img src="/static/img/green.png">
+		    <select id='left' name="tipo" onchange="getPontosLeft()">
+				<option value="">---------</option>
+				{% for t in tipos %}
+				<option value="{{t.0}}">{{t.1}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div id="div-right">
+			<img src="/static/img/red.png">
+		    <select id='right' name="tipo" onchange="getPontosRight()">
+				<option value="">---------</option>
+				{% for t in tipos %}
+				<option value="{{t.0}}">{{t.1}}</option> <!-- t.0 quer dizer t[0] -->
+				{% endfor %}
+			</select>
+		</div>
 	
+	</div>
     <div id="map-canvas"></div>
 {% endblock %}

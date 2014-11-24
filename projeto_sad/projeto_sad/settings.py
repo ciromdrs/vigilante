@@ -63,9 +63,9 @@ WSGI_APPLICATION = 'projeto_sad.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'vigilante',
+        'NAME': 'vigilante_db',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': '123',
         'HOST':'localhost'
     }
 }
