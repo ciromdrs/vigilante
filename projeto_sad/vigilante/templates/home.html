@@ -11,12 +11,17 @@
     
         <div id="div-left">
 	        <img src="/static/img/red.png">
+	        Tipo
 		    <select id='left' name="tipo" onchange="getPontosLeft()">
 				<option value="">---------</option>
 				{% for t in tipos %}
 				<option value="{{t.0}}">{{t.1}}</option>
 				{% endfor %}
 			</select>
+			<br>
+			A partir de <input type="date" id="left-data_ini">
+			<br>
+			Antes de <input type="date" id="left-data_fim">
 		</div>
 		
 		<div id="div-right">

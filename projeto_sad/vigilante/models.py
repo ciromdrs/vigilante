@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 from django.db import models
-from util import *
+from vigilante.util import get_lat_lng
+
 '''Possíveis tipos de Evento. Os pares indicam o valor a ser guardado no banco
 (ex.: ASSALTO) e um valor amigável ao usuário (ex.: Assalto).'''
 TIPOS_DE_EVENTOS = (
@@ -14,10 +15,11 @@ TIPOS_DE_EVENTOS = (
 # Create your models here.
 class Evento(models.Model):
     '''O evento representa uma ocorrência. Mantive o mesmo nome do banco original.'''
-    _lat = models.TextField(blank=True) # Latitude
-    _lng = models.TextField(blank=True) # Longitude
-    endereco = models.TextField()       # Endereço da ocorrência na forma de texto
-    tipo = models.CharField(max_length=30, choices=TIPOS_DE_EVENTOS)
+    _lat     = models.TextField(blank=True) # Latitude
+    _lng     = models.TextField(blank=True) # Longitude
+    endereco = models.TextField()           # Endereço da ocorrência em texto
+    tipo     = models.CharField(max_length=30, choices=TIPOS_DE_EVENTOS)
+    data     = models.DateField()
     
     @property
     def lat(self):
