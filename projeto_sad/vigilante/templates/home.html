@@ -12,7 +12,7 @@
         <div id="div-left">
 	        <img src="/static/img/red.png">
 	        Tipo
-		    <select id='left' name="tipo" onchange="getPontosLeft()">
+		    <select id='left-tipo' name="tipo" onchange="getPontosLeft()">
 				<option value="">---------</option>
 				{% for t in tipos %}
 				<option value="{{t.0}}">{{t.1}}</option>
@@ -26,12 +26,18 @@
 		
 		<div id="div-right">
 			<img src="/static/img/green.png">
-		    <select id='right' name="tipo" onchange="getPontosRight()">
+			Tipo
+		    <select id='right-tipo' name="tipo" onchange="getPontosRight()">
 				<option value="">---------</option>
 				{% for t in tipos %}
 				<option value="{{t.0}}">{{t.1}}</option> <!-- t.0 quer dizer t[0] -->
 				{% endfor %}
 			</select>
+			
+			<br>
+            A partir de <input type="date" id="right-data_ini">
+            <br>
+            Antes de <input type="date" id="right-data_fim">
 		</div>
 	
 	</div>

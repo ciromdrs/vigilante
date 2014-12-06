@@ -19,7 +19,7 @@ function apagar(array){
 function getPontosLeft(){
     var requisicao = new XMLHttpRequest(); // Não funciona no IE8 ou mais antigo
     var url = 'json/pontos/';
-    var tipo_evento = document.getElementById('left').value;
+    var tipo_evento = document.getElementById('left-tipo').value;
     var data_ini = document.getElementById('left-data_ini').value;
     var data_fim = document.getElementById('left-data_fim').value;
 
@@ -36,11 +36,15 @@ function getPontosLeft(){
 }
 
 function getPontosRight(){
-    var requisicao = new XMLHttpRequest(); // Não funciona no IE8 ou mais antigo
+	var requisicao = new XMLHttpRequest(); // Não funciona no IE8 ou mais antigo
     var url = 'json/pontos/';
-    var tipo_evento = document.getElementById('right').value;
+    var tipo_evento = document.getElementById('right-tipo').value;
+    var data_ini = document.getElementById('right-data_ini').value;
+    var data_fim = document.getElementById('right-data_fim').value;
 
-    url += '?tipo='+tipo_evento
+    url += '?tipo='+tipo_evento;
+    url += '&data_ini='+data_ini;
+    url += '&data_fim='+data_fim;
     
     requisicao.open('GET', url, false);
     requisicao.onreadystatechange = function(){
